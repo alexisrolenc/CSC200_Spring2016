@@ -16,7 +16,7 @@ public class Driver
 		//System.out.println(Driver.removeVowels(s2));
 		//System.out.println(Driver.removeConsonants(s));
 		//System.out.println(Driver.removeDigits(s3));
-		Driver.stringToInt(s3);
+		System.out.println(Driver.stringToInt(removeChars(s3, "AaEeIiOoUuBbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz")));
 	}
 	
 	//return the integer version of the char parameter
@@ -33,8 +33,8 @@ public class Driver
 		int runningTotal = 0;
 		
 		for (int i = s.length()-1; i >= 0; i--) {
-	        runningTotal += (s.charAt(i) - '0') * place;
-	        place *= 10;
+	        	runningTotal += (charToInt(s.charAt(i))) * place;
+			place *= 10;
 	    }
 	    return runningTotal;
 
