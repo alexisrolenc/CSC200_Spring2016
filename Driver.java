@@ -13,62 +13,58 @@ public class Driver
 		//System.out.println(Driver.indexOf(s2, 'p'));
 		//System.out.println(Driver.indexOf(s2, 'e'));
 		//System.out.println(Driver.indexOf(s2, 'z'));
-		System.out.println(Driver.removeVowels(s2));
-		System.out.println(Driver.removeConsonants(s));
-		System.out.println(Driver.removeDigits(s3));
+		//System.out.println(Driver.removeVowels(s2));
+		//System.out.println(Driver.removeConsonants(s));
+		//System.out.println(Driver.removeDigits(s3));
+		Driver.stringToInt(s3);
 	}
+	
+	//return the integer version of the char parameter
+	static int charToInt(char c)
+	{
+		return "0123456789".indexOf(c);
+	}
+	
+	//converts s, which is a string representation
+	//of an int into int representation
+	//"124" -> 124
+	static int stringToInt(String s)
+	{ 	int place = 1;
+		int runningTotal = 0;
+		
+		for (int i = s.length()-1; i >= 0; i--) {
+	        runningTotal += (s.charAt(i) - '0') * place;
+	        place *= 10;
+	    }
+	    return runningTotal;
 
-	//returns a new String with all of those vowels
-	//removed from the parameter String
-	//"hello" -> hll
+	}
+	static String removeChars(String s, String charsToRemove)
+	{
+		String answer = "";
+		for(int i = 0; i < s.length(); i++)
+		 {
+			if(charsToRemove.indexOf(s.charAt(i)) == -1)
+			{
+			answer = answer + s.charAt(i);
+			}
+		}
+		return answer;
+	}
+	
 	static String removeVowels(String s)
 	{
-		String answer = ""; 
-		ArrayList<Character> vowelsArrayList = new ArrayList<Character>();
-		String vowels =  "AaEeIiOoUu";
-		char [] vowelCharArray = vowels.toCharArray();
-		for(int i = 0; i < vowelCharArray.length; i++){
-			vowelsArrayList.add(vowelCharArray[i]);
-		}
-		answer = returnString(s, vowelsArrayList); 
-		return answer; 
-
+		return Driver.removeChars(s, "AaEeIiOoUu");
 	}
 
-	//returns a new String with all of those consonants
-	//removed from the parameter String
-	//"hello" -> eo
 	static String removeConsonants(String s)
 	{
-		String answer = "";  
-		ArrayList<Character> consonantsArrayList = new ArrayList<Character>();
-		String consonants =  "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz";
-		char [] consonantsCharArray = consonants.toCharArray();
-		for(int i = 0; i < consonantsCharArray.length; i++){
-			consonantsArrayList.add(consonantsCharArray[i]);
-		}
-		answer = returnString(s, consonantsArrayList); 
-		return answer; 
-
+		return Driver.removeChars(s, "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz"); 
 	}
-
-	//returns a new String with all of those digits
-	//removed from the parameter String
-	//"he11o" -> heo
+	
 	static String removeDigits(String s)
 	{
-		String answer = "";  
-		ArrayList<Character> numbersArrayList = new ArrayList<Character>();
-		String numbers =  "1234567890";
-		char [] numbersCharArray = numbers.toCharArray(); // ['1', '2', '3' ... '0']
-		//before for loop numbersArrayList == [];
-		for(int i = 0; i < numbersCharArray.length; i++){
-			numbersArrayList.add(numbersCharArray[i]); 
-		}
-		//after for loop numbersArrayList ['1', '2', '3' ... '0']
-		answer = returnString(s, numbersArrayList); 
-		return answer; 
-
+		return Driver.removeChars(s, "1234567890");
 	}
 
 	//return the first occurrence in s where c is found or -1 if
