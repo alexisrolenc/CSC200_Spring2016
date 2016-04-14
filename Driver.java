@@ -4,21 +4,35 @@ public class Driver
 {
 	public static void main(String[] args)
 	{
-		String s = "hello";
-		String s2 = "elephant";
-		String s3 = "Ha44y B1r7hda9";
-		//System.out.println(s2.indexOf('p'));
-		//System.out.println(s2.indexOf('e'));
-		//System.out.println(s2.indexOf('z'));
-		//System.out.println(Driver.indexOf(s2, 'p'));
-		//System.out.println(Driver.indexOf(s2, 'e'));
-		//System.out.println(Driver.indexOf(s2, 'z'));
-		//System.out.println(Driver.removeVowels(s2));
-		//System.out.println(Driver.removeConsonants(s));
-		//System.out.println(Driver.removeDigits(s3));
-		Driver.stringToInt(s3);
+		String s = "-124";
+		String bin = "1011";
+		System.out.println(s + 5);
+		System.out.println(Driver.stringToInt(s) + 5);
+		System.out.println(Integer.parseInt(s) + 5);
+		System.out.println(Driver.binaryToInteger(bin));
 	}
 	
+	//this guy should take a String representation of a binary number 
+	//as a parameter and return as a int the decimal equivalent 
+	//"1011" -> 11 
+	static int binaryToInteger(String bin) 
+ 	{ 	 
+		int place = 1; 
+		int runningTotal = 0; 
+		char currChar;
+		for (int i = bin.length()-1; i >= 0; i--) 
+		{ 
+			currChar = bin.charAt(i);
+			if(currChar == '-')
+			{
+				return runningTotal * -1;
+			}
+			runningTotal += (Driver.charToInt(currChar)) * place; 
+			place *= 2; 
+		}
+	    return runningTotal;
+ 	} 
+
 	//return the integer version of the char parameter
 	static int charToInt(char c)
 	{
@@ -29,13 +43,19 @@ public class Driver
 	//of an int into int representation
 	//"124" -> 124
 	static int stringToInt(String s)
-	{ 	int place = 1;
-		int runningTotal = 0;
-		
-		for (int i = s.length()-1; i >= 0; i--) {
-	        runningTotal += (s.charAt(i) - '0') * place;
-	        place *= 10;
-	    }
+	{ 	int place = 1; 
+		int runningTotal = 0; 
+		char currChar;
+		for (int i = s.length()-1; i >= 0; i--) 
+		{ 
+			currChar = s.charAt(i);
+			if(currChar == '-')
+			{
+				return runningTotal * -1;
+			}
+			runningTotal += (Driver.charToInt(currChar)) * place; 
+			place *= 10; 
+		}
 	    return runningTotal;
 
 	}
