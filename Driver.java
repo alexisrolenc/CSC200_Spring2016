@@ -10,6 +10,18 @@ public class Driver
 		System.out.println(Driver.stringToInt(s) + 5);
 		System.out.println(Integer.parseInt(s) + 5);
 		System.out.println(Driver.binaryToInteger(bin));
+		String s2 = "elephant";
+		String s3 = "Ha44y B1r7hda9";
+		//System.out.println(s2.indexOf('p'));
+		//System.out.println(s2.indexOf('e'));
+		//System.out.println(s2.indexOf('z'));
+		//System.out.println(Driver.indexOf(s2, 'p'));
+		//System.out.println(Driver.indexOf(s2, 'e'));
+		//System.out.println(Driver.indexOf(s2, 'z'));
+		//System.out.println(Driver.removeVowels(s2));
+		//System.out.println(Driver.removeConsonants(s));
+		//System.out.println(Driver.removeDigits(s3));
+		System.out.println(Driver.stringToInt(removeChars(s3, "AaEeIiOoUuBbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz")));
 	}
 	
 	//this guy should take a String representation of a binary number 
@@ -56,6 +68,12 @@ public class Driver
 			runningTotal += (Driver.charToInt(currChar)) * place; 
 			place *= 10; 
 		}
+	 	
+		
+		for (int i = s.length()-1; i >= 0; i--) {
+	        	runningTotal += (charToInt(s.charAt(i))) * place;
+			place *= 10;
+	    }
 	    return runningTotal;
 
 	}
