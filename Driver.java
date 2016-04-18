@@ -4,14 +4,81 @@ public class Driver
 {
 	public static void main(String[] args)
 	{
-		
-		String bin = "1011";
 		//System.out.println(s + 5);
 		//System.out.println(Driver.stringToInt(s) + 5);
 		//System.out.println(Integer.parseInt(s) + 5);
-		System.out.println(Driver.binaryToInteger(bin));
+		System.out.println(Driver.decimalToBase(2989, 16));
 	}
 	
+	static String decimalToBase(int decimalNumber, int radix )
+	{
+		String result = "";
+		while(decimalNumber > 0)
+		{
+			int remainder = decimalNumber % radix;
+			result = Driver.intToChar(remainder) + result;
+
+			decimalNumber = decimalNumber / radix;
+			
+		}
+		return result;
+	}
+	
+	static char intToChar(int val)
+	{
+		return ("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ").charAt(val);
+	}
+	
+	static int baseToInteger(String s, int radix)
+	{
+		int place = 1; 
+		int runningTotal = 0; 
+		char currChar;
+		for (int i = s.length()-1; i >= 0; i--) 
+		{ 
+			currChar = s.charAt(i);
+			currChar = s.charAt(i);
+			runningTotal += (Driver.charToInt(currChar)) * place;
+			place *= radix;
+		}
+		return runningTotal; 
+	}
+	
+	static int hexToInteger(String hex)
+	{
+		int place = 1; 
+		int runningTotal = 0; 
+		char currChar;
+		for (int i = hex.length()-1; i >= 0; i--) 
+		{ 
+			currChar = hex.charAt(i);
+			currChar = hex.charAt(i);
+			runningTotal += (Driver.charToInt(currChar)) * place;
+			place *= 16;
+		}
+		return runningTotal; 
+			 
+	}
+	static int octalToInteger(String oct)
+	{
+		int place = 1; 
+		int runningTotal = 0; 
+		char currChar;
+		for (int i = oct.length()-1; i >= 0; i--) 
+		{ 
+			currChar = oct.charAt(i);
+			if(currChar == '-')
+			{
+				currChar = oct.charAt(i);
+				runningTotal += (Driver.charToInt(currChar)) * place;
+				place *= 8;
+				
+			}
+			 
+			 
+		}
+	    return runningTotal;
+	}
 	//this guy should take a String representation of a binary number 
 	//as a parameter and return as a int the decimal equivalent 
 	//"1011" -> 11 
@@ -36,7 +103,7 @@ public class Driver
 	//return the integer version of the char parameter
 	static int charToInt(char c)
 	{
-		return "0123456789".indexOf(c);
+		return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(c);
 	}
 	
 	//converts s, which is a string representation
