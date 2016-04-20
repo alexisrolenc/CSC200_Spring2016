@@ -4,16 +4,45 @@ public class Driver
 {
 	public static void main(String[] args)
 	{
-		//System.out.println(s + 5);
-		//System.out.println(Driver.stringToInt(s) + 5);
-		//System.out.println(Integer.parseInt(s) + 5);
-		System.out.println(Driver.decimalToBase(2989, 16));
+		String s = "hello";
+		char [] sArray = Driver.stringToCharArray(s);
+		System.out.print("[");
+		int i = 0;
+		for(i = 0; i < sArray.length - 1; i++){
+			System.out.print("'" + sArray[i] + "', ");
+		}
+		System.out.print("'" + sArray[i]+ "']");
+
 	}
 	
+	static char[] stringToCharArray(String s)
+	{
+		return  s.toCharArray(); // ['h', 'e', 'l', 'l', 'o']
+	}
+	
+	static String substring(String s, int beginPos, int endPos)
+	{
+		String answer = "";
+		for(int i = beginPos; i < endPos; i++)
+		{
+			answer += s.charAt(i);
+		}
+		return answer;
+	}
+	static String substring(String s, int pos)
+	{
+		String answer = "";
+		for(int i = pos; i < s.length(); i++)
+		{
+			answer += s.charAt(i);
+			//answer = answer + s.charAt(i)
+		}
+		return answer;
+	}
 	static String decimalToBase(int decimalNumber, int radix )
 	{
 		String result = "";
-		while(decimalNumber > 0)
+		while(decimalNumber != 0)
 		{
 			int remainder = decimalNumber % radix;
 			result = Driver.intToChar(remainder) + result;
