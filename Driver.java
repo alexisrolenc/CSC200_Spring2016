@@ -4,17 +4,55 @@ public class Driver
 {
 	public static void main(String[] args)
 	{
-		String s = "hello";
-		char [] sArray = Driver.stringToCharArray(s);
-		System.out.print("[");
-		int i = 0;
-		for(i = 0; i < sArray.length - 1; i++){
-			System.out.print("'" + sArray[i] + "', ");
-		}
-		System.out.print("'" + sArray[i]+ "']");
+		int[] arrayOfNumbers = new int[10];
+		Driver.fillArrayWithRandomInts(arrayOfNumbers);
+		Driver.printIntArray(arrayOfNumbers);
+		Driver.sortArray(arrayOfNumbers);
+		Driver.printIntArray(arrayOfNumbers);
+	}
+	
+	static void sortArray(int[] ar)
+	{
+		//put the elements of the array in order SOMEHOW!!!
+		for (int i = 1; i < ar.length; i++)
+		{ 
+			int numbers = ar[i]; 
+			while ((i > 0) &&  (ar[i-1] > numbers))
+			{ 
+				ar[i] = ar[i-1]; 
+				i--; 
+			} 
+		ar[i] = numbers; 
+ 		} 
 
 	}
 	
+	static void fillArrayWithRandomInts(int[] ar)
+	{
+		Random r = new Random();
+		for(int i = 0; i < ar.length; i++)
+		{
+			ar[i] = r.nextInt(101);
+		}
+	}
+	
+	static void printIntArray(int[] ar)
+	{
+		for(int i = 0; i < ar.length; i++)
+		{
+			System.out.print(ar[i] + " ");
+		}
+		System.out.println();
+	}
+	static String charArrayToString(char[] ar)
+	{
+		String answer = "";
+		for(int i = 0; i < ar.length; i++)
+		{
+			answer += ar[i];
+		}
+		return answer;
+	}
 	static char[] stringToCharArray(String s)
 	{
 		return  s.toCharArray(); // ['h', 'e', 'l', 'l', 'o']
