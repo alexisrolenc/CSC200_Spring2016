@@ -7,10 +7,32 @@ public class Driver
 		int[] arrayOfNumbers = new int[10];
 		Driver.fillArrayWithRandomInts(arrayOfNumbers);
 		Driver.printIntArray(arrayOfNumbers);
-		Driver.sortArray(arrayOfNumbers);
+		Driver.bubbleSort(arrayOfNumbers);
 		Driver.printIntArray(arrayOfNumbers);
 	}
 	
+	static void bubbleSort(int[] arrayOfNumbers) 
+	{ 
+		int i;
+		boolean j = true;
+		int bubble;
+
+		while(j)
+		{
+			j = false;
+			for(i = 1; i < arrayOfNumbers.length; i++)
+			{
+				if(arrayOfNumbers[i] < arrayOfNumbers[i-1])
+				{
+					bubble = arrayOfNumbers[i-1];
+					arrayOfNumbers[i-1] = arrayOfNumbers[i];
+					arrayOfNumbers[i] = bubble;
+					j = true;
+				}
+			}
+		}
+	}  
+
 	static void sortArray(int[] ar)
 	{
 		//put the elements of the array in order SOMEHOW!!!
